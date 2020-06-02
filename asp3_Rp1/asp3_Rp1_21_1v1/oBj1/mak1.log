@@ -1,0 +1,1368 @@
+ruby ../tecsgen/tecsgen.rb ../sample/sample1.cdl -R -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel --cpp "arm-none-eabi-gcc  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  -D TECSGEN -E" -g ./gen
+tecsgen  version 1.3.1.7  Copyright(c) 2008-2016, TOPPERS project. All rights reserved.
+make[1]: ディレクトリ `/home/toshi/aps3Toppers2018/asp3_Rp1_21_0v1/obj1' に入ります
+ruby ../cfg/cfg.rb --pass 1 --kernel asp -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel --api-table ../kernel/kernel_api.def --symval-table ../kernel/kernel_sym.def  --symval-table ../arch/arm_gcc/common/core_sym.def \
+						-M deps/cfg1_out_c.d ../target/rp1_gcc/target_kernel.cfg ../sample/sample1.cfg
+[cfg.rb] Generated cfg1_out.c
+arm-none-eabi-gcc -c -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../arch/arm_gcc/common/start.S
+arm-none-eabi-gcc -c -MD -MP -MF deps/cfg1_out.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DTOPPERS_CB_TYPE_ONLY  cfg1_out.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/kernel_int.h:53,
+                 from cfg1_out.c:3:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/kernel_int.h:58,
+                 from cfg1_out.c:3:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/kernel_int.h:53,
+                 from cfg1_out.c:3:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/kernel_int.h:58,
+                 from cfg1_out.c:3:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/kernel_int.h:53,
+                 from cfg1_out.c:3:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -nostdlib  -mcpu=arm1176jzf-s  -T ../target/rp1_gcc/rp1.ld  -o cfg1_out \
+						start.o cfg1_out.o 
+arm-none-eabi-nm -n cfg1_out > cfg1_out.syms
+arm-none-eabi-objcopy -O srec -S cfg1_out cfg1_out.srec
+ruby ../cfg/cfg.rb --pass 2 --kernel asp -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -T ../target/rp1_gcc/target_kernel.trb
+[cfg.rb] Generated kernel_cfg.h
+[cfg.rb] Generated kernel_cfg.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/startup12.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../sample/startup12.S
+arm-none-eabi-gcc -c -MD -MP -MF deps/sample1.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../sample/sample1.c
+../sample/sample1.c: In function 'blinkLedTask':
+../sample/sample1.c:269:2: warning: implicit declaration of function 'm_serialPutStr' [-Wimplicit-function-declaration]
+  m_serialPutStr("Start blinkLedTask ");
+  ^
+../sample/sample1.c:279:2: warning: implicit declaration of function 'ledToggle47' [-Wimplicit-function-declaration]
+  ledToggle47();// Only for Pi1 Pi2 
+  ^
+../sample/sample1.c:280:3: warning: implicit declaration of function 'ledToggleRed' [-Wimplicit-function-declaration]
+   ledToggleRed( );
+   ^
+../sample/sample1.c: In function 'cyclic_handler':
+../sample/sample1.c:286:1: warning: implicit declaration of function 'm_serialPutChar' [-Wimplicit-function-declaration]
+ m_serialPutChar('X');
+ ^
+../sample/sample1.c: In function 'main_task':
+../sample/sample1.c:330:2: warning: implicit declaration of function 'writeVectorBaseRegister' [-Wimplicit-function-declaration]
+  writeVectorBaseRegister(0x0000);
+  ^
+../sample/sample1.c:331:2: warning: implicit declaration of function 'setLowVector' [-Wimplicit-function-declaration]
+  setLowVector();
+  ^
+../sample/sample1.c:323:7: warning: unused variable 'tskpri' [-Wunused-variable]
+  PRI  tskpri;
+       ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/mini_serialPi1.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../sample/mini_serialPi1.c
+../sample/mini_serialPi1.c: In function 'enQueT':
+../sample/mini_serialPi1.c:174:27: warning: unused variable 'rpiIRQController' [-Wunused-variable]
+  struct rpiIrqController *rpiIRQController = 
+                           ^
+../sample/mini_serialPi1.c: In function 'enQueR':
+../sample/mini_serialPi1.c:216:27: warning: unused variable 'rpiIRQController' [-Wunused-variable]
+  struct rpiIrqController *rpiIRQController = 
+                           ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/log_output.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../library/log_output.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/vasyslog.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../library/vasyslog.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/t_perror.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../library/t_perror.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/strerror.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../library/strerror.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/init_tecs.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../tecs_kernel/init_tecs.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tTask_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tTask_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSemaphore_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tSemaphore_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tInterruptRequest_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tInterruptRequest_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tISR_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tISR_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tInitializeRoutine_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tInitializeRoutine_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tTerminateRoutine_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tTerminateRoutine_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSerialPortMain_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tSerialPortMain_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSerialAdapter_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tSerialAdapter_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSysLog_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tSysLog_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSysLogAdapter_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tSysLogAdapter_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tLogTaskMain_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tLogTaskMain_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tBannerMain_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tBannerMain_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tPutLogBCM283X_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tPutLogBCM283X_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tUART_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tUART_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSIOPortBCM283XMain_tecsgen.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ./gen/tSIOPortBCM283XMain_tecsgen.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tTask.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../tecs_kernel/tTask.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tISR.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../tecs_kernel/tISR.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tInitializeRoutine.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../tecs_kernel/tInitializeRoutine.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tTerminateRoutine.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../tecs_kernel/tTerminateRoutine.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSerialPortMain.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../syssvc/tSerialPortMain.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSerialAdapter.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../syssvc/tSerialAdapter.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSysLog.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../syssvc/tSysLog.c
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../syssvc/tSysLog.c:73:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function 'target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../syssvc/tSysLog.c:47:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../syssvc/tSysLog.c:73:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../syssvc/tSysLog.c:47:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/tSysLogAdapter.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../syssvc/tSysLogAdapter.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tLogTaskMain.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../syssvc/tLogTaskMain.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tPutLogBCM283X.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../arch/arm_gcc/bcm283x/tPutLogBCM283X.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/tUART.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../arch/arm_gcc/bcm283x/tUART.c
+../arch/arm_gcc/bcm283x/tUART.c: In function 'uart_getready':
+../arch/arm_gcc/bcm283x/tUART.c:65:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  return((sil_rew_mem(BCM283X_AUX_MU_LSR_REG) & 0x01) != 0);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'uart_putready':
+../arch/arm_gcc/bcm283x/tUART.c:86:3: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+   return((sil_rew_mem(BCM283X_AUX_MU_LSR_REG) & 0x20) != 0);
+   ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'uart_getchar':
+../arch/arm_gcc/bcm283x/tUART.c:102:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  return((char)(sil_rew_mem(BCM283X_AUX_MU_IO_REG) & 0xFF));
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'uart_putchar':
+../arch/arm_gcc/bcm283x/tUART.c:115:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_IO_REG, c);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'tUART_eSIOPort_open':
+../arch/arm_gcc/bcm283x/tUART.c:144:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_ENABLES, 1);  /* Enable UART1 */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:145:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_IER_REG, 0);  /* Disable interrupt */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:146:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_CNTL_REG, 0); /* Disable Transmitter and Receiver */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:147:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_LCR_REG, 3);  /* Works in 8-bit mode */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:148:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_MCR_REG, 0);  /* Disable RTS */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:150:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_IIR_REG, 0xC6); /* Enable FIFO, Clear FIFO */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:154:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_BAUD_REG, baud); /* 115200 = system clock 250MHz / (8 * (baud + 1)), baud = 270 */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:155:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_CNTL_REG, 3); /* Enable Transmitter and Receiver */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'tUART_eSIOPort_close':
+../arch/arm_gcc/bcm283x/tUART.c:189:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_ENABLES, 0);  /* Disable UART1 */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:190:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_IER_REG, 0);  /* Disable interrupt */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:191:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_CNTL_REG, 0); /* Disable Transmitter and Receiver */
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:186:10: warning: unused variable 'p_cellcb' [-Wunused-variable]
+  CELLCB *p_cellcb = GET_CELLCB(idx);
+          ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'tUART_eSIOPort_getChar':
+../arch/arm_gcc/bcm283x/tUART.c:219:7: warning: unused variable 'c' [-Wunused-variable]
+  char c;
+       ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'tUART_eSIOPort_enableCBR':
+../arch/arm_gcc/bcm283x/tUART.c:237:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  imsc = sil_rew_mem(BCM283X_AUX_MU_IER_REG);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:258:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_IER_REG, imsc);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:233:11: warning: unused variable 'p_cellcb' [-Wunused-variable]
+  CELLCB  *p_cellcb = GET_CELLCB(idx);
+           ^
+../arch/arm_gcc/bcm283x/tUART.c: In function 'tUART_eSIOPort_disableCBR':
+../arch/arm_gcc/bcm283x/tUART.c:274:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  imsc = sil_rew_mem(BCM283X_AUX_MU_IER_REG);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:295:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_AUX_MU_IER_REG, imsc);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/tUART.c:45:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/tUART.c:270:11: warning: unused variable 'p_cellcb' [-Wunused-variable]
+  CELLCB  *p_cellcb = GET_CELLCB(idx);
+           ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/kernel_cfg.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DTOPPERS_CB_TYPE_ONLY  kernel_cfg.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/kernel_int.h:53,
+                 from kernel_cfg.c:2:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/kernel_int.h:58,
+                 from kernel_cfg.c:2:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/kernel_int.h:53,
+                 from kernel_cfg.c:2:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/kernel_int.h:58,
+                 from kernel_cfg.c:2:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/kernel_int.h:53,
+                 from kernel_cfg.c:2:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+ruby ../cfg/cfg.rb --pass 2 -O --kernel asp -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -T ../arch/arm_gcc/common/core_offset.trb \
+				--rom-symbol cfg1_out.syms --rom-image cfg1_out.srec
+[cfg.rb] Generated offset.h
+arm-none-eabi-gcc -c -MD -MP -MF deps/chip_config_asm.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../arch/arm_gcc/bcm283x/chip_config_asm.S
+arm-none-eabi-gcc -c -MD -MP -MF deps/core_support.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../arch/arm_gcc/common/core_support.S
+arm-none-eabi-gcc -c -MD -MP -MF deps/target_gpio.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../target/rp1_gcc/target_gpio.c
+../target/rp1_gcc/target_gpio.c: In function 'target_gpio_initialize':
+../target/rp1_gcc/target_gpio.c:53:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  r = sil_rew_mem(BCM283X_GPIO_GPFSEL1);
+  ^
+In file included from ../target/rp1_gcc/target_gpio.c:40:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../target/rp1_gcc/target_gpio.c:58:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_GPIO_GPFSEL1, r);
+  ^
+In file included from ../target/rp1_gcc/target_gpio.c:40:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../target/rp1_gcc/target_gpio.c:60:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_GPIO_GPPUD, 0);
+  ^
+In file included from ../target/rp1_gcc/target_gpio.c:40:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../target/rp1_gcc/target_gpio.c:61:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  for(r = 0; r < 150; r++) a = sil_rew_mem(BCM283X_GPIO_GPFSEL1); /* dummy */
+  ^
+In file included from ../target/rp1_gcc/target_gpio.c:40:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../target/rp1_gcc/target_gpio.c:62:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_GPIO_GPPUDCLK0, (1<<14)|(1<<15)); /* GPIO14 PullUD disable / GPIO15 PullUD disable */
+  ^
+In file included from ../target/rp1_gcc/target_gpio.c:40:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../target/rp1_gcc/target_gpio.c:63:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  for(r = 0; r < 150; r++) a = sil_rew_mem(BCM283X_GPIO_GPFSEL1); /* dummy */
+  ^
+In file included from ../target/rp1_gcc/target_gpio.c:40:0:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../target/rp1_gcc/target_gpio.c:64:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_GPIO_GPPUDCLK0, 0);
+  ^
+In file included from ../target/rp1_gcc/target_gpio.c:40:0:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../target/rp1_gcc/target_gpio.c:48:22: warning: variable 'a' set but not used [-Wunused-but-set-variable]
+  volatile uint32_t r,a;
+                      ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/target_kernel_impl.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../target/rp1_gcc/target_kernel_impl.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../target/rp1_gcc/target_kernel_impl.c:45:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+../target/rp1_gcc/target_kernel_impl.c: In function '_kernel_target_initialize':
+../target/rp1_gcc/target_kernel_impl.c:65:2: warning: implicit declaration of function 'target_gpio_initialize' [-Wimplicit-function-declaration]
+  target_gpio_initialize();
+  ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/chip_kernel_impl.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../arch/arm_gcc/bcm283x/chip_kernel_impl.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_kernel_impl.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+../arch/arm_gcc/bcm283x/chip_kernel_impl.c: In function 'config_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.c:260:12: warning: assignment discards 'const' qualifier from pointer target type [enabled by default]
+  p_intinib = &(intinib_table[intno]);
+            ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/chip_timer.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../arch/arm_gcc/bcm283x/chip_timer.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/chip_timer.c: In function '_kernel_target_hrt_get_current':
+../arch/arm_gcc/bcm283x/chip_timer.c:62:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  return((HRTCNT) sil_rew_mem(BCM283X_STIMER_CLO));
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/chip_timer.c: In function 'target_hrt_int_clear':
+../arch/arm_gcc/bcm283x/chip_timer.c:71:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_CS, 0x2);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/chip_timer.c: In function '_kernel_target_hrt_initialize':
+../arch/arm_gcc/bcm283x/chip_timer.c:88:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) - 1);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/chip_timer.c:88:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) - 1);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/bcm283x/chip_timer.c: In function '_kernel_target_hrt_terminate':
+../arch/arm_gcc/bcm283x/chip_timer.c:105:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) - 1);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+../arch/arm_gcc/bcm283x/chip_timer.c:105:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) - 1);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/bcm283x/chip_timer.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/core_kernel_impl.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../arch/arm_gcc/common/core_kernel_impl.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/common/core_kernel_impl.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../arch/arm_gcc/common/core_kernel_impl.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/common/core_kernel_impl.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../arch/arm_gcc/common/core_kernel_impl.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../arch/arm_gcc/common/core_kernel_impl.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+../arch/arm_gcc/common/core_kernel_impl.c: In function 'config_section_entry':
+../arch/arm_gcc/common/core_kernel_impl.c:80:10: warning: unused variable 'i' [-Wunused-variable]
+  uint_t  i;
+          ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/arm.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../arch/arm_gcc/common/arm.c
+arm-none-eabi-gcc -c -MD -MP -MF deps/startup.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/startup.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/startup.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/startup.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/startup.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/startup.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/startup.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/task.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/task.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/taskhook.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/taskhook.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/taskhook.c:45:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/taskhook.c:46:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/taskhook.c:45:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/taskhook.c:46:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/taskhook.c:45:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/wait.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/wait.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/wait.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/wait.h:52,
+                 from ../kernel/wait.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/wait.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/wait.h:52,
+                 from ../kernel/wait.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/wait.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/time_event.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/time_event.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/time_event.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/time_event.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/time_event.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/time_event.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/time_event.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/task_manage.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/task_manage.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_manage.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_manage.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_manage.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_manage.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_manage.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/task_refer.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/task_refer.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_refer.c:45:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_refer.c:47:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_refer.c:45:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_refer.c:47:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_refer.c:45:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/task_sync.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/task_sync.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_sync.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_sync.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_sync.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_sync.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_sync.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/task_term.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/task_term.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_term.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_term.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_term.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/task_term.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_term.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/task_term.c:47:
+../kernel/task_term.c: In function 'ext_tsk':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:263:38: warning: array subscript is above array bounds [-Warray-bounds]
+     uint32_t ipm_maskb = ipm_mask_tbl[INDEX_IPM(intpri)][0];
+                                      ^
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:264:38: warning: array subscript is above array bounds [-Warray-bounds]
+     uint32_t ipm_mask1 = ipm_mask_tbl[INDEX_IPM(intpri)][1];
+                                      ^
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:265:38: warning: array subscript is above array bounds [-Warray-bounds]
+     uint32_t ipm_mask2 = ipm_mask_tbl[INDEX_IPM(intpri)][2];
+                                      ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/semaphore.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/semaphore.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/semaphore.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/semaphore.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/semaphore.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/semaphore.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/semaphore.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/eventflag.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/eventflag.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/eventflag.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/eventflag.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/eventflag.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/eventflag.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/eventflag.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/dataqueue.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/dataqueue.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/dataqueue.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/dataqueue.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/dataqueue.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/dataqueue.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/dataqueue.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/pridataq.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/pridataq.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/pridataq.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/pridataq.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/pridataq.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/pridataq.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/pridataq.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/mutex.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/mutex.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/mutex.c:45:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/mutex.c:47:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/mutex.c:45:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/mutex.c:47:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/mutex.c:45:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/mempfix.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/mempfix.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/mempfix.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/mempfix.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/mempfix.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/mempfix.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/mempfix.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/time_manage.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/time_manage.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/time_manage.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/time_manage.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/time_manage.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/time_manage.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/time_manage.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/cyclic.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/cyclic.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/cyclic.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/cyclic.h:51,
+                 from ../kernel/cyclic.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/cyclic.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/cyclic.h:51,
+                 from ../kernel/cyclic.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/cyclic.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/alarm.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/alarm.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/alarm.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/alarm.h:51,
+                 from ../kernel/alarm.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/alarm.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/alarm.h:51,
+                 from ../kernel/alarm.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/alarm.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/sys_manage.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/sys_manage.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/sys_manage.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/sys_manage.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/sys_manage.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/sys_manage.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/sys_manage.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/interrupt.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/interrupt.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/interrupt.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/interrupt.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/interrupt.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/interrupt.c:49:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/interrupt.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+arm-none-eabi-gcc -c -MD -MP -MF deps/exception.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -DALLFUNC  -I../kernel ../kernel/exception.c
+In file included from ../target/rp1_gcc/target_kernel_impl.h:79:0,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/exception.c:47:
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h: In function 'probe_int':
+../arch/arm_gcc/bcm283x/chip_kernel_impl.h:464:2: warning: implicit declaration of function 'bcm283x_probe_pending' [-Wimplicit-function-declaration]
+  return(bcm283x_probe_pending(intno));
+  ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/exception.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h: In function '_kernel_target_hrt_set_event':
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_rew_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/exception.c:47:
+../include/sil.h:209:1: note: expected 'const uint32_t *' but argument is of type 'int'
+ sil_rew_mem(const uint32_t *mem)
+ ^
+In file included from ../target/rp1_gcc/target_timer.h:51:0,
+                 from ../kernel/time_event.h:51,
+                 from ../kernel/task.h:52,
+                 from ../kernel/exception.c:48:
+../arch/arm_gcc/bcm283x/chip_timer.h:94:2: warning: passing argument 1 of 'sil_wrw_mem' makes pointer from integer without a cast [enabled by default]
+  sil_wrw_mem(BCM283X_STIMER_C1, sil_rew_mem(BCM283X_STIMER_CLO) + hrtcnt);
+  ^
+In file included from ../arch/arm_gcc/bcm283x/chip_kernel_impl.h:59:0,
+                 from ../target/rp1_gcc/target_kernel_impl.h:79,
+                 from ../kernel/kernel_impl.h:75,
+                 from ../kernel/exception.c:47:
+../include/sil.h:218:1: note: expected 'uint32_t *' but argument is of type 'int'
+ sil_wrw_mem(uint32_t *mem, uint32_t data)
+ ^
+rm -f libkernel.a
+arm-none-eabi-ar -rcs libkernel.a  chip_config_asm.o core_support.o  target_gpio.o target_kernel_impl.o chip_kernel_impl.o chip_timer.o core_kernel_impl.o arm.o startup.o task.o taskhook.o wait.o time_event.o task_manage.o task_refer.o task_sync.o task_term.o semaphore.o eventflag.o dataqueue.o pridataq.o mutex.o mempfix.o time_manage.o cyclic.o alarm.o sys_manage.o interrupt.o exception.o 
+arm-none-eabi-ranlib libkernel.a
+arm-none-eabi-gcc -c -MD -MP -MF deps/tBannerMain.d -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel  ../syssvc/tBannerMain.c
+../syssvc/tBannerMain.c: In function 'tBannerMain_eBannerInitialize_main':
+../syssvc/tBannerMain.c:68:8: warning: implicit declaration of function 'syslog_msk_log' [-Wimplicit-function-declaration]
+        syslog_msk_log(LOG_UPTO(LOG_DEBUG), LOG_UPTO(LOG_DEBUG));  // 2018_06 TT
+        ^
+arm-none-eabi-gcc -O2 -Wall -g   -mcpu=arm1176jzf-s  -DTOPPERS_USE_BCM2835 -D__TARGET_ARCH_ARM=6  -I. -I../include  -I../target/rp1_gcc -I../arch/arm_gcc/bcm283x -I../arch/arm_gcc/common -I../arch/gcc -I.. -I../sample -I./gen -I../tecs_kernel -nostdlib  -mcpu=arm1176jzf-s  -T ../target/rp1_gcc/rp1.ld  -L. -o asp \
+			start.o startup12.o sample1.o mini_serialPi1.o log_output.o vasyslog.o t_perror.o strerror.o   init_tecs.o tTask_tecsgen.o tSemaphore_tecsgen.o tInterruptRequest_tecsgen.o tISR_tecsgen.o tInitializeRoutine_tecsgen.o tTerminateRoutine_tecsgen.o tSerialPortMain_tecsgen.o tSerialAdapter_tecsgen.o tSysLog_tecsgen.o tSysLogAdapter_tecsgen.o tLogTaskMain_tecsgen.o tBannerMain_tecsgen.o tPutLogBCM283X_tecsgen.o tUART_tecsgen.o tSIOPortBCM283XMain_tecsgen.o   tTask.o tISR.o tInitializeRoutine.o tTerminateRoutine.o tSerialPortMain.o tSerialAdapter.o tSysLog.o tSysLogAdapter.o tLogTaskMain.o tBannerMain.o tPutLogBCM283X.o tUART.o     kernel_cfg.o  \
+			-lkernel -lc -lgcc  
+sample1.o: In function `blinkLedTask':
+/home/toshi/aps3Toppers2018/asp3_Rp1_21_0v1/obj1/../sample/sample1.c:278: undefined reference to `ledToggle'
+/home/toshi/aps3Toppers2018/asp3_Rp1_21_0v1/obj1/../sample/sample1.c:279: undefined reference to `ledToggle47'
+/home/toshi/aps3Toppers2018/asp3_Rp1_21_0v1/obj1/../sample/sample1.c:280: undefined reference to `ledToggleRed'
+sample1.o: In function `main_task':
+/home/toshi/aps3Toppers2018/asp3_Rp1_21_0v1/obj1/../sample/sample1.c:397: undefined reference to `ledInit'
+collect2: error: ld returned 1 exit status
+make[1]: *** [asp] エラー 1
+make[1]: ディレクトリ `/home/toshi/aps3Toppers2018/asp3_Rp1_21_0v1/obj1' から出ます
+make: *** [all] エラー 2

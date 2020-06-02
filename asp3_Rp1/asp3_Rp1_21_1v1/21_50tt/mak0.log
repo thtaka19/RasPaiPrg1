@@ -1,0 +1,17 @@
+h8300-elf-gcc -E -mh -x c system.cfg | ../hos-v4/config/hos4cfg -
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe kernel_cfg.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe main70I.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe moncont60I.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe cliB70I.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe commands70n.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe mailbox50I.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe interrupt70I.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe timer16_Itrn1.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe mailboxApi.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe common.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe serialRint60I.c
+h8300-elf-gcc -c -O2 -Wall -I../include -I../include/h83 -I. -I../h83N -mh -c -pipe buf.c
+h8300-elf-gcc -mh -mrelax -nostartfiles -nostdlib -Wl,-Map,21_70tt.map -Wl,-T../NewCom/h83069.x -L../lib/h83/gcc -o 21_70tt.elf kernel_cfg.o main70I.o  moncont60I.o   cliB70I.o commands70n.o  mailbox50I.o interrupt70I.o timer16_Itrn1.o mailboxApi.o common.o  serialRint60I.o  buf.o ../NewCom/crt0.o ../NewCom/vector.o  ../NewCom/ostimer2.o  ../NewCom/led.o ../NewCom/lcdDrv.o ../NewCom/button.o ../NewCom/adda.o ../NewCom/buzzer.o -lgcc -lh4h83
+c:/kpitx86/gnuh8v12.02-elf/h8300-elf/bin/../lib/gcc/h8300-elf/4.7-GNUH8_v12.02/../../../../h8300-elf/bin/ld.exe: cannot find -lh4h83
+collect2.exe: error: ld returned 1 exit status
+make: *** [21_70tt] Error 1

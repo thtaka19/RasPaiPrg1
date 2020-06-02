@@ -1,0 +1,39 @@
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c i2c1.c -o i2c1.o
+i2c1.c:4:1: warning: data definition has no type or storage class
+ gpio_configure(int, int);// pin,mode
+ ^
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c spi0.c -o spi0.o
+spi0.c:4:1: warning: data definition has no type or storage class
+ gpio_configure(int, int);// pin,mode
+ ^
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c raspGPIO1.c -o raspGPIO1.o
+raspGPIO1.c: In function 'gpio_configure':
+raspGPIO1.c:77:9: warning: incompatible implicit declaration of built-in function 'printf'
+         printf("error: pin number out of range (gpio_configure)\n");
+         ^
+raspGPIO1.c: In function 'gpio_set':
+raspGPIO1.c:95:9: warning: incompatible implicit declaration of built-in function 'printf'
+         printf("error: pin number out of range (gpio_set)\n");
+         ^
+raspGPIO1.c: In function 'gpio_clear':
+raspGPIO1.c:106:9: warning: incompatible implicit declaration of built-in function 'printf'
+         printf("error: pin number out of range (gpio_clear)\n");
+         ^
+raspGPIO1.c: In function 'gpio_read':
+raspGPIO1.c:120:9: warning: incompatible implicit declaration of built-in function 'printf'
+         printf("error: pin number out of range (gpio_read)\n");
+         ^
+raspGPIO1.c: In function 'gpio_configure_pull':
+raspGPIO1.c:141:9: warning: incompatible implicit declaration of built-in function 'printf'
+         printf("error: pin number out of range (gpio_configure_pull)\n");
+         ^
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c timer.c -o timer.o
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c ADT7310.c -o ADT7310.o
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c AQM0802p.c -o AQM0802p.o
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c main000.c -o main000.o
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c atoix_itoa.c -o atoix_itoa.o
+/usr/bin/arm-none-eabi-ld -T viperlite10.ld -Map Rpi00_0Pai1_v001.map startup01.o startupadd.o  serial.o  gpio.o syscalls.o  led10.o mini_serialPi1.o buzzer.o buttonPi1.o i2c1.o spi0.o  raspGPIO1.o timer.o ADT7310.o AQM0802p.o main000.o atoix_itoa.o -L/usr/lib/gcc/arm-none-eabi/4.8.2/ -L/usr/lib/arm-none-eabi/newlib/ -lc -lgcc -lc -o Rpi00_0Pai1_v001.out
+/usr/bin/arm-none-eabi-objcopy -O srec Rpi00_0Pai1_v001.out Rpi00_0Pai1_v001.mot
+/usr/bin/arm-none-eabi-objcopy -O ihex Rpi00_0Pai1_v001.out Rpi00_0Pai1_v001.hex
+/usr/bin/arm-none-eabi-objcopy -O binary Rpi00_0Pai1_v001.out Rpi00_0Pai1_v001.bin
+/usr/bin/arm-none-eabi-objcopy -O binary Rpi00_0Pai1_v001.out kernel7.img

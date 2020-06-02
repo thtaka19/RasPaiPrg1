@@ -1,0 +1,122 @@
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c i2c1.c -o i2c1.o
+In file included from i2c1.c:1:0:
+../cmn00/rpi_i2c.h:40:21: error: unknown type name 'uint16_t'
+ void Wire1_setSpeed(uint16_t div);
+                     ^
+../cmn00/rpi_i2c.h:42:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_requestFrom(uint8_t address, uint32_t count);
+ ^
+../cmn00/rpi_i2c.h:42:28: error: unknown type name 'uint8_t'
+ uint32_t Wire1_requestFrom(uint8_t address, uint32_t count);
+                            ^
+../cmn00/rpi_i2c.h:42:45: error: unknown type name 'uint32_t'
+ uint32_t Wire1_requestFrom(uint8_t address, uint32_t count);
+                                             ^
+../cmn00/rpi_i2c.h:43:30: error: unknown type name 'uint8_t'
+ void Wire1_beginTransmission(uint8_t address);
+                              ^
+../cmn00/rpi_i2c.h:44:1: error: unknown type name 'uint8_t'
+ uint8_t Wire1_endTransmission(int mode);
+ ^
+../cmn00/rpi_i2c.h:45:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeByte(uint8_t value);
+ ^
+../cmn00/rpi_i2c.h:45:26: error: unknown type name 'uint8_t'
+ uint32_t Wire1_writeByte(uint8_t value);
+                          ^
+../cmn00/rpi_i2c.h:46:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeString(uint8_t *string);
+ ^
+../cmn00/rpi_i2c.h:46:28: error: unknown type name 'uint8_t'
+ uint32_t Wire1_writeString(uint8_t *string);
+                            ^
+../cmn00/rpi_i2c.h:47:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeData(uint8_t *data, uint32_t quantity);
+ ^
+../cmn00/rpi_i2c.h:47:26: error: unknown type name 'uint8_t'
+ uint32_t Wire1_writeData(uint8_t *data, uint32_t quantity);
+                          ^
+../cmn00/rpi_i2c.h:47:41: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeData(uint8_t *data, uint32_t quantity);
+                                         ^
+../cmn00/rpi_i2c.h:48:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_available(void);
+ ^
+../cmn00/rpi_i2c.h:49:1: error: unknown type name 'uint8_t'
+ uint8_t Wire1_read(void);
+ ^
+i2c1.c:4:1: warning: data definition has no type or storage class
+ gpio_configure(int, int);// pin,mode
+ ^
+i2c1.c:10:10: error: unknown type name 'uint16_t'
+ volatile uint16_t divider = BSC_DIV_100KHZ;
+          ^
+i2c1.c:14:10: error: unknown type name 'uint8_t'
+ volatile uint8_t txBuffer[BUFFER_LENGTH];
+          ^
+i2c1.c:15:10: error: unknown type name 'uint32_t'
+ volatile uint32_t txBufferIndex;
+          ^
+i2c1.c:16:10: error: unknown type name 'uint32_t'
+ volatile uint32_t txBufferLength;
+          ^
+i2c1.c:17:10: error: unknown type name 'uint8_t'
+ volatile uint8_t rxBuffer[BUFFER_LENGTH];
+          ^
+i2c1.c:18:10: error: unknown type name 'uint32_t'
+ volatile uint32_t rxBufferIndex;
+          ^
+i2c1.c:19:10: error: unknown type name 'uint32_t'
+ volatile uint32_t rxBufferLength;
+          ^
+i2c1.c:21:21: error: unknown type name 'uint16_t'
+ void Wire1_setSpeed(uint16_t div){
+                     ^
+i2c1.c:49:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_requestFrom(uint8_t address, uint32_t count){
+ ^
+i2c1.c:49:28: error: unknown type name 'uint8_t'
+ uint32_t Wire1_requestFrom(uint8_t address, uint32_t count){
+                            ^
+i2c1.c:49:45: error: unknown type name 'uint32_t'
+ uint32_t Wire1_requestFrom(uint8_t address, uint32_t count){
+                                             ^
+i2c1.c:119:30: error: unknown type name 'uint8_t'
+ void Wire1_beginTransmission(uint8_t address){
+                              ^
+i2c1.c:130:1: error: unknown type name 'uint8_t'
+ uint8_t Wire1_endTransmission(int mode){
+ ^
+i2c1.c:179:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeByte(uint8_t value){
+ ^
+i2c1.c:179:26: error: unknown type name 'uint8_t'
+ uint32_t Wire1_writeByte(uint8_t value){
+                          ^
+i2c1.c:189:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeString(uint8_t *string){
+ ^
+i2c1.c:189:28: error: unknown type name 'uint8_t'
+ uint32_t Wire1_writeString(uint8_t *string){
+                            ^
+i2c1.c:198:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeData(uint8_t *data, uint32_t quantity){
+ ^
+i2c1.c:198:26: error: unknown type name 'uint8_t'
+ uint32_t Wire1_writeData(uint8_t *data, uint32_t quantity){
+                          ^
+i2c1.c:198:41: error: unknown type name 'uint32_t'
+ uint32_t Wire1_writeData(uint8_t *data, uint32_t quantity){
+                                         ^
+i2c1.c:210:1: error: unknown type name 'uint32_t'
+ uint32_t Wire1_available(void){
+ ^
+i2c1.c:214:1: error: unknown type name 'uint8_t'
+ uint8_t Wire1_read(void){
+ ^
+i2c1.c: In function 'Wire1_read':
+i2c1.c:215:2: error: unknown type name 'uint8_t'
+  uint8_t read = 0;
+  ^
+Makefile:69: recipe for target 'i2c1.o' failed
+make: *** [i2c1.o] Error 1
