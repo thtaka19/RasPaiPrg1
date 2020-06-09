@@ -1,0 +1,62 @@
+#************************************************************************/
+#*      GCC/LLCM ARM Baremetal Software / (C) Toshio MURAI  2012-2016   */
+#*      This is Free Software.   You can redistribute this software     */
+#*      and/or modify it ,under the terms of the GNU General Public     */
+#*      License version 3, or (at your option) any later version.       */
+#*      or under the terms of the BSD 3-Clause License.	(Dual Licence)  */
+#*        Pai2 Compile  For Pai3  32 Bit      2017 May TT               */
+#*                                                                       */
+#************************************************************************/
+CPU=arm1176jzf-f
+#CPU=cortex-a7
+#	ARCH=armv7-a
+
+###  apt-get 
+CPATH= /usr/bin/arm-none-eabi-
+
+CC=$(CPATH)gcc
+AS=$(CPATH)as
+LD=$(CPATH)ld
+OBJCOPY=$(CPATH)objcopy
+
+
+OBJECTS= startup01.o startupadd.o   syscalls.o led10.o
+OBJECTS +=  main82_0.o interrupt10.o  timer9.o 
+OBJECTS +=  mini_serialPi1.o mini_serialAdInt.o
+OBJECTS += raspGPIO1.o
+    MEMORYMAP= viperlite10.ld
+
+OBJECTNAME=Pi1_08_2_v100
+
+
+###  apt-get 
+	LIBGCC  = /usr/lib/gcc/arm-none-eabi/4.8.2/
+	LIBC = /usr/lib/arm-none-eabi/newlib/
+
+
+
+#####   Original ###
+#	CFLAGS = -mcpu=$(CPU) -msoft-float -g -O2
+	CFLAGS = -msoft-float -g -O2
+	CFLAGS+= -I. -I.. -I/usr/local/include
+#	ASFLAGS= -mcpu=$(CPU) --defsym HYPER=1 --defsym JTAG=1 # -mfpu=neon
+	ASFLAGS= -mcpu=$(CPU) --defsym JTAG=1 # -mfpu=neon
+
+$(OBJECTNAME).elf:  $(OBJECTS)
+	$(LD) -T $(MEMORYMAP) -Map $(OBJECTNAME).map $(OBJECTS) -L$(LIBGCC) -L$(LIBC) -lc -lgcc -lc -o $(OBJECTNAME).elf
+	$(OBJCOPY) -O srec $(OBJECTNAME).elf $(OBJECTNAME).mot
+#	$(OBJCOPY) -O ihex $(OBJECTNAME).elf $(OBJECTNAME).hex
+	$(OBJCOPY) -O binary $(OBJECTNAME).elf $(OBJECTNAME).bin
+#	$(OBJCOPY) -O binary $(OBJECTNAME).elf kernel7.img
+
+
+.S.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
+
+
+clean	:
+	rm -rf *.o $(OBJECTNAME).* kernel*.img *.mot *.hex *.bin *.img *.elf *.map

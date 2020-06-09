@@ -1,0 +1,29 @@
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c main82_0.c -o main82_0.o
+main82_0.c: In function 'main':
+main82_0.c:110:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("\nWelcome to ARM Common Software (%s %s).\r\n", __DATE__ , __TIME__);
+  ^
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c interrupt10.c -o interrupt10.o
+interrupt10.c: In function 'prt_vector_table':
+interrupt10.c:49:3: warning: incompatible implicit declaration of built-in function 'printf'
+   printf("Vector table check\r\n");
+   ^
+interrupt10.c: In function 'interruptServiceRoutine':
+interrupt10.c:84:5: warning: incompatible implicit declaration of built-in function 'printf'
+     printf("Timer Int. %d times",i1);
+     ^
+interrupt10.c:105:3: warning: incompatible implicit declaration of built-in function 'printf'
+   printf("Serial Int. %d times",i2);
+   ^
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c timer9.c -o timer9.o
+timer9.c: In function 'LEDblinkMsg':
+timer9.c:30:3: warning: incompatible implicit declaration of built-in function 'printf'
+   printf("LED: ON %d\r\n",led);  
+   ^
+timer9.c:33:3: warning: incompatible implicit declaration of built-in function 'printf'
+   printf("LED: OFF\r\n");
+   ^
+/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c mini_serialAdInt.c -o mini_serialAdInt.o
+/usr/bin/arm-none-eabi-ld -T ../cmn00/viperlite10.ld -Map Pi1_08_2_v200.map ../cmn00/startup01.o ../cmn00/startupadd.o   ../cmn00/syscalls.o ../cmn00/led10.o main82_0.o interrupt10.o  timer9.o  ../cmn00/mini_serialPi1.o mini_serialAdInt.o ../cmn00/raspGPIO1.o -L/usr/lib/gcc/arm-none-eabi/4.8.2/ -L/usr/lib/arm-none-eabi/newlib/ -lc -lgcc -lc -o Pi1_08_2_v200.elf
+/usr/bin/arm-none-eabi-objcopy -O srec Pi1_08_2_v200.elf Pi1_08_2_v200.mot
+/usr/bin/arm-none-eabi-objcopy -O binary Pi1_08_2_v200.elf Pi1_08_2_v200.bin
