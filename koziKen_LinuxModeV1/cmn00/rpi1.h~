@@ -1,0 +1,22 @@
+#ifndef RPILIB_H
+#define RPILIB_H
+ 
+// bss
+#include "rpi_bss.h"
+
+// peripherals
+//#include "rpi_peripherals.h"
+
+// gpio
+#include "rpi_gpio.h"
+
+// timer
+//#include "rpi_timer.h"
+
+// delay
+//#include "rpi_delay.h"
+
+// serial
+#include "rpi_serial.h"
+
+#endif
