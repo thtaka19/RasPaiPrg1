@@ -1,5 +1,5 @@
 cmn00 is not same for (Pi Zero , Pi1 ) and( Pi2, Pi3)
-This cmn00 is for (Pi Zero , Pi1 ).
+This cmn00 is for (Pi Zero , Pi1 ).Linux Mode
 
 So 
 ---<rpi_periAddress00.h>---

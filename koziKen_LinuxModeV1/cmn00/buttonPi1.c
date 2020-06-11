@@ -78,11 +78,6 @@ SW_status = 0;
  	if(SW_status0 == LOW){ 
 	  SW_status = SW_status | 0x04 ; }  // SW2 On
 
-/***  GPIO26 is use for outPut 
- 	SW_status0 = (*(volatile unsigned int *)GPLEV0 & (0x01 << GPIONo[3]));
- 	if(SW_status0 == LOW){ SW_status = SW_status | 0x08 ; }  // SW3 On
-***/
-
 
 //  printf("SW1(GPIO18)=%x  \r\n",*(volatile unsigned int *)GPLEV0 );	
 //  printf("SW0-3(GPIO13,GPIO18,19,26)=%x  \r\n",SW_status);
@@ -134,7 +129,6 @@ gpio_configure(13, GPIO_INPUT);
 	*(volatile unsigned int *)GPPUDCLK0 = 0x01 << 18;// GPIO18 ;GPPUDCLK0: GPIO 31-00 ; GPPUDCLK1: GPIO 53-32
 
 	*(volatile unsigned int *)GPPUDCLK0 = 0x01 << 19;//  GPIO19 
-//	*(volatile unsigned int *)GPPUDCLK0 = 0x01 << 26;//  GPIO26 
 	*(volatile unsigned int *)GPPUDCLK0 = 0x01 << 13;//  GPIO13 
 	***/
 	gpio_configure_pull (18,GPIO_PULLUP );

@@ -61,21 +61,6 @@ initialise_monitor_handles (void)
 {
 }
 
-//  Note: If you enable folloing 2, printf function will not work!
-// static int
-// get_errno (void)
-// {
-//     return(0);
-// }
-
-// static int
-// error (int result)
-// {
-//   errno = get_errno ();
-//   return result;
-// }
-
-
 int
 _read (int file,
        char * ptr,

@@ -18,14 +18,7 @@ void SPI0_begin(int ss_port){
 	//pinMode(10, ALT0);
 	// SCLK
 	//pinMode(11, ALT0);
-	/***
-	res0 = GPFSEL0;
-	res1 = GPFSEL1;
-//	*res0 |= GPFSEL_MASK_ALT0(8);
-	*res0 |= GPFSEL_MASK_ALT0(9);
-	*res1 |= GPFSEL_MASK_ALT0(10);
-	*res1 |= GPFSEL_MASK_ALT0(11);
-***/
+
 gpio_configure(9, GPIO_ALT0);
 gpio_configure(10, GPIO_ALT0);
 gpio_configure(11, GPIO_ALT0);

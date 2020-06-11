@@ -21,7 +21,7 @@ void SPI0_begin(int ss_port){
 	/***
 	res0 = GPFSEL0;
 	res1 = GPFSEL1;
-//	*res0 |= GPFSEL_MASK_ALT0(8);
+
 	*res0 |= GPFSEL_MASK_ALT0(9);
 	*res1 |= GPFSEL_MASK_ALT0(10);
 	*res1 |= GPFSEL_MASK_ALT0(11);

@@ -35,42 +35,19 @@ int main(void){
 	disableDataCache();
 	disableMMU();
 
-
-	// disable interrupt(IRQ)
-//	disable_all_IRQ();
 	interruptDisable();
-	// Set vectortable
-//	set_vector_table();
 
-	// Initialize system timer
-//	init_syst();
-
-	
 	ledInit();
 	ledOn(LED_GREEN16);
 
 	// Enable UART1(mini_UART) 
 	m_serialInit();
-//	Serial_begin(115200);// Serial Init 
 
 //	timerInit();
 
 //	delay_ms(10);
 
-
 	m_serialPutStr("Start Main Rpi00_0 Pai3 Main V11\r\n");
-//	serialPutStr("Start Main Rpi00_0 Pai3 Main V11\r\n");
-
-//	writeVectorBaseRegister(0x0000);
-//	setLowVector();
-//	setHighVector();
-
-	// Enable IRQ interrupt
-//	enable_IRQ();
-
-//	printf("VectorBaseRegister (in Main2) = 0x%08x\r\n",readVectorBaseRegister());
-//	printf("CPSR (in Main2) = 0x%08x\r\n",getmode());
-
 
 	printf("\r\n Type EchoBack Characerr\n");
 	while(1){
@@ -78,8 +55,7 @@ int main(void){
 
 	  rcvc=m_serialGetChar();
 	  m_serialPutChar(rcvc);
-//	  rcvc=serialGetChar();
-//	  serialPutChar(rcvc);
+
  	  delay_ms(10);
 	}
 	return 0;
@@ -106,16 +82,3 @@ void initializeMemory()   // Memoru clear called from starup10.s
 void interruptServiceRoutine(void) { ///// Dummy for Interrupt called from startup10.s
 
 }
-/***
-void print01(void){
- printf("XX");
-}
-void print02(void){
- printf("-2");
-}
-void print03(void){
- printf("-3");
-}void print09(void){
- printf("++");
-}
-***/

@@ -107,12 +107,7 @@ gpio_clear(21);
 void ledTogglePin(int );
 
 void ledTogglePi2(void) {	//Only for pi1 B+,Pi2 ,and Zero  on Board LED
-    /***
-	if( *(volatile unsigned int *)GPLEV1 & LED_ACT2 )  
-		*(volatile unsigned int *)GPCLR1 = LED_ACT2; // GPIO47
-	 else 
-		*(volatile unsigned int *)GPSET1 = LED_ACT2;
-	***/
+
 //	m_serialPutStr("Drbug LedTog2 Called \r\n>");
 	   // GPIO47 =32+15 --> (0x01 << 15)
 	if( gpio_read(47) ) // If GPIO47 On 

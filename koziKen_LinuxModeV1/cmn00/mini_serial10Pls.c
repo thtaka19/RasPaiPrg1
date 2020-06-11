@@ -64,11 +64,10 @@ void m_serialRcvInterrupt(void)   //  Changed  9Pls.c 2017 TT
 	   rcvSndI[1]++;//Send Empty counter
 	   m_serialPutChar('-');//Debug
 //       m_serialPutChar('x');//Debug
-//  **************111 ++ **********
+
 	   data = deQueT(); 
 	   if((data)  >= 0) {  // Good data from Que
-//			rpiAux->MU_IER0_REG =0x01;	//Disable Send Interrupt only Rcv TT
-//	   } else { // Normal process
+
 		  if((!(rpiAux->MU_LSR_REG &0x20) ==0 )  ) { //Transfer FIFO Empty
 		  if(outpT == inpT) rpiAux->MU_IER0_REG =0x01;//Next Que is Empty,then Disable Send Interrupt only Rcv TT
 //          m_serialPutChar('-');//Debug
@@ -81,16 +80,9 @@ void m_serialRcvInterrupt(void)   //  Changed  9Pls.c 2017 TT
 //  **************** 222 ++ ********************
 		if(outpT == inpT) rpiAux->MU_IER0_REG =0x01;//Disable Send Interrupt only Rcv TT
 		else 		  rpiAux->MU_IER0_REG =0x03; //Int Send and Rcv mode
-/***
 
-***/
 	} 
-/***	
-	else { // not  {receive(irq== 0x04) &&  Send(irq == 0x02)}
-		m_serialPutChar('?');	// not mini UART interrupt !
-		m_serialPutChar('2');	// 
-	}
-***/
+
 
 }
 void rcvSndIcnt(int * tmp1) {
@@ -134,7 +126,6 @@ void enable_m_serial_Int(){
 	// 
 	rpiIRQController->Enable_IRQs_1 |= 0x01<<29;
 
-	//*TIMER_CONTROL |= TMR_INT_EN;
 }
 
 void disable_m_serial_Int(){
@@ -163,9 +154,8 @@ void m_serialInit(void)
 	rpiAux->MU_CNTL_REG=0;	//01 Receive Enable 02 Transmit Enalbe
 	rpiAux->MU_LCR_REG=3;	//0x 8bit mode	3?	DLAB access = 0x80
 	rpiAux->MU_MCR_REG=0;	//Modem Control 0
-//	rpiAux->MU_IER_REG=0;   //2017 TT
+
 	rpiAux->MU_IER0_REG=0;	
-//	rpiAux->MU_IIR_REG=0xC6;	// 0xC6 FIFO Enable/Clear
 	rpiAux->MU_IIR0_REG=0x06;	// 0xC6 FIFO 6:Clear	
 	rpiAux->MU_IIR0_REG=0xC6;	// 0xC6 FIFO c:Enable/ 6:Clear
 		//((250,000,000/115200)/8)-1 = 270
@@ -185,11 +175,10 @@ void m_serialInit(void)
 
 
 	rpiIRQController->Enable_IRQs_1 = 0x01<<29;
-//	rpiAux->MU_IER_REG=0x03;	//Enable Receive Interrupt 0x03
-//	rpiAux->MU_IER0_REG=0x01;	//Enable 1:Receive Interruptrrupi 2:trancemit Interrupt 1+2= 0x03 TT
+
 	rpiAux->MU_IER0_REG=0x00;	// No Interrupt
 					//Enable Transmit Interrupt 0x01
-///**  Enable here is Better ??	rpiAux->ENABLES=1;
+
 	rpiAux->ENABLES=1;	//enable only miniUART, Not (SPI1, SPI2)
         inpT=txbuf;         outpT=txbuf;
 	inpR=rvbuf;         outpR=rvbuf;
@@ -216,9 +205,7 @@ void m_serialInitIsndrcv(void) // New function at mini_serial9APls.c
 void m_Serial_begin(int dmy) {
   m_serialInit();
 }
-//#ifdef	AARCH64
 
-//void	m_putCharI(int data)	// put with Interrupt Transmit
 void m_serialPutCharI(int data) // Changed 2017 TT 
 {
 int data1;

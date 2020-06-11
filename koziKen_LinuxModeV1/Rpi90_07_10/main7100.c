@@ -170,21 +170,4 @@ m_serialPutStr("Others Called \r\n>");
 //***********************************************************************/
 //*	GNU Linker .text/.bss Initialize routine before main function.	*/
 //***********************************************************************/
-/***
-extern char etext[], sdata[], edata[], sbss[] , ebss[];
-void initializeMemory()   // Memoru clear called from starup10.s
-{
-	char *src, *dst;
-	
-	for( src = etext, dst = sdata ; dst< edata ; )  // Initial data copy
-		*dst++ = *src++;
-		
-	for( dst=sbss                 ; dst< ebss  ; )   // Bss 0 clead
-		*dst++ =0;
 
-}
-
-void interruptServiceRoutine(void) { ///// Dummy for Interrupt called from startup10.s
-
-}
-***/

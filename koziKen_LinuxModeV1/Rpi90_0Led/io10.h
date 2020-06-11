@@ -8,55 +8,7 @@
 //#include <stdint.h>
 /*	Rapsberry PI2 Pin (2016/03/01-)
 01 DC 3v			02 DC 5v
-03 GPIO 02 (SDA/I2C)		04 DC 5v
-05 GPIO 03 (SCL/I2C)		06 Ground
-07 GPIO 04 (GPCLK0) 	<TDI>	08 GPIO 14 (TXD)
-09 Ground			10 GPIO 15 (RXD)
-11 GPIO 17 	[A]/(INT1)	12 GPIO 18 (PWM0)	[B]/(INT2)
-13 GPIO 27		<TMS>	14 Ground
-15 GPIO 22 		<TRST>	16 GPIO 23 		[C]/(INT3)
-17 3v3 Power			18 GPIO 24 		<TDO>
-19 GPIO 10 (MOSI/SPI)		20 Ground		
-21 GPIO 09 (MISO/SPI)		22 GPIO 25 		<TCK>
-23 GPIO 11 (SCLK/SPI)		24 GPIO 8 (CE0/SPI)		
-25 Ground			26 GPIO 7 (CE1/SPI) 	
---( 3 + 5JTAG + 2I2C + 5SPI)--- Empty GPIO = 9 ----------------
-27 BCM 0 (ID_SD)		28 BCM 1 (ID_SC)
-29 GPIO 05		[CLOCK]	30 Ground
-31 GPIO 06		[LATCH]	32 GPIO 12 (PWM0)	[R1]
-33 GPIO 13 (PWM1)	[G1]	34 Ground
-35 GPIO 19 (MISO)	[R2]	36 GPIO 16 		[B1]
-37 GPIO 26		[OE]	38 GPIO 20 (MOSI)	[G2]
-39 Ground			40 GPIO 21 (SCLK)	[B2]
- */
-/* JTAG
-01	VREF(01)		02
-03	TRST(15)		04 GND(09)
-05	TDI (05)		06
-07	TMS (07)		08
-09	TCK (09)		10
-11	(TRCK 16?11?)		12
-13	TDO (13)		14
-15				16
-17				18
-19				20
- */
-#include "../cmn00/rpi_periAddress00.h"
-// Fore BareMetal rpi_periAddress00.h
-
-// #define PHY_PERI_ADDR(x) (0x20000000 + (x))  for Pi Zero , Pi1 or
-// #define PHY_PERI_ADDR(x) (0x3F000000 + (x))  for Pi2 , Pi3 
-
-
-//#define	RPI_IO_BASE	(0x20000000)	//Raspberry PI1 B / B+
-#define	RPI_IO_BASE  PHY_PERI_ADDR(0x00000000)
-#define RPI_UART_BASE	(struct rpiUart *)(RPI_IO_BASE |0x00201000)
-#define RPI_GPIO_BASE	(struct rpiGpio *)(RPI_IO_BASE |0x00200000)  
-#define RPI_SYSTIMER_BASE	(RPI_IO_BASE | 0x0000B200)
-#define RPI_ARMTIMER_BASE	(RPI_IO_BASE | 0x0000B400)
-#define RPI_INTERRUPT_CONTROLLER_BASE	(RPI_IO_BASE | 0x0000B200)
-#define SPI0_BASE		(struct rpiSpi0 *) (RPI_IO_BASE |0x00204000)
-#define BSC1_BASE	    (struct rpiBsc1 *) (RPI_IO_BASE |0x00804000)
+**/
 struct rpiAux {
 	volatile unsigned int	IRQ;		/*	5000	*/
 	volatile unsigned int	ENABLES;	/*	5004	*/

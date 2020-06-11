@@ -2,8 +2,7 @@
 #include "../cmn00/io10.h"
 #define GPIO_ALT0     0x4
 gpio_configure(int, int);// pin,mode
-//#define FALSE	(0) 
-//#define TRUE	(!FALSE)
+
 void delay(int );
 
 // configure value
@@ -28,11 +27,7 @@ void Wire1_begin(void){
 	// port setting
 	//pinMode(2, ALT0); // SDA
 	//pinMode(3, ALT0); // SCL
-	/*** GPIO_ALT0
-	res0 = GPFSEL0;
-	*res0 |= GPFSEL_MASK_ALT0(2);// |= 0x04 << (2*3)
-	*res0 |= GPFSEL_MASK_ALT0(3);// |= 0x04 << (3*3)
-***/
+
 gpio_configure(2, GPIO_ALT0);
 gpio_configure(3, GPIO_ALT0);
 	// set I2C clock divider

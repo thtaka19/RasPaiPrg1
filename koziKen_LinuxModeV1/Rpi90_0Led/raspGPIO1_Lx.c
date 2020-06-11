@@ -23,7 +23,7 @@
 static volatile unsigned int *Gpio;
 static volatile unsigned int *Spi;
 static volatile unsigned int *I2c;
-static volatile struct rpiGpio *rpiGpio = RPI_GPIO_BASE;
+static volatile struct rpiGpio *rpiGpio ;
 //static	struct rpiSpi0* rpiSpi0= SPI0_BASE;//Spi
 //static	struct rpiBsc1* rpiBsc1 = BSC1_BASE;//I2c
 //  GPIO 初期化（最初に１度だけ呼び出すこと）  For Linux Self.
@@ -31,7 +31,8 @@ static volatile struct rpiGpio *rpiGpio = RPI_GPIO_BASE;
 void gpio_init(void)
 {
     //  既に初期化済なら何もしない
-    if (Gpio) return;
+//    if (Gpio) return;
+    if (rpiGpio) return;
     //  ここから GPIO 初期化
     int fd;
     void *gpio_map;
@@ -218,31 +219,4 @@ delay00(1);//     usleep(1);
 rpiGpio->GPPUD = 0;
 rpiGpio->GPPUDCLK[0] = 0;
 }
-/***
-//
-void ledTogglePi2(void) {	//Only for pi1 B+,Pi2 ,and Zero  on Board LED
- 
-	   // GPIO47 =32+15 --> (0x01 << 15)
-	if( gpio_read(47) ) // If GPIO47 On 
-		gpio_clear(47); // 	GPIO47 clear
-	 else 
-		gpio_set(47);// 		GPIO47 Set
-}
-int main () { 
-     printf("GPIO1_Lx Start v1\n");
-	struct rpiGpio *rpiGpio = RPI_GPIO_BASE;
-    gpio_init();                        //  オマジナイ 
-	gpio_configure(20, GPIO_OUTPUT);        //  GPIO_20 を出力に設定 
-	gpio_configure(47, GPIO_OUTPUT);     //  GPIO_47 を出力に設定 オンボードLED
-   while (1) { 
-         ledTogglePi2( );
-         gpio_set(20);                   //  1 を出力（3.3V）  
-//		 usleep(500000);                 //  0.5秒待ち 
-	delay00(500);
-         ledTogglePi2( );		 
-		 gpio_clear(20);                 //  0 を出力（0V） 
-//		 usleep(500000);                 //  0.5秒待ち  
-	delay00(500);		 
-   }
- } 
- ***/
+
