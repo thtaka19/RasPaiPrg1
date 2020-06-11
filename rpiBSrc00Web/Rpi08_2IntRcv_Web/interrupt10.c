@@ -86,15 +86,7 @@ irqP[0]++;
 		}
 	};
 /***
-	if(rpiIRQController->IRQ_basic_pending & (0x01<<1)) {// 1
-		//mailboxHander();
-	};
-	if(rpiIRQController->IRQ_basic_pending & (0x01<<2)) {// 2
-		//doorebell1Hadnler();
-	};
-	if(rpiIRQController->IRQ_basic_pending & (0x01<<3)) {// 3
-		//doorebell2Hadnler();
-	};
+
 ***/
 
 	if(rpiIRQController->IRQ_pending_1 & (0x01<<29)) {// Pi3 mini_Serial Int29
@@ -108,14 +100,7 @@ irqP[1]++;
 	}
 
 
-//	if(rpiIRQController->IRQ_pending_2 & (0x01<<17)) {/*49(17) GPIO0*/} 
-//	if(rpiIRQController->IRQ_pending_2 & (0x01<<18)) {/*50(18) GPIO1*/} 
-//	if(rpiIRQController->IRQ_pending_2 & (0x01<<19)) {/*51(19) GPIO2*/} 
-//	if(rpiIRQController->IRQ_pending_2 & (0x01<<20)) {/*52(20) GPIO3*/} 
-//	if(rpiIRQController->IRQ_pending_2 & (0x01<<21)) {/*53(21) I2C*/} 
-//	if(rpiIRQController->IRQ_pending_2 & (0x01<<22)) {/*54(22) SPI*/} 
-//	if(rpiIRQController->IRQ_pending_2 & (0x01<<23)) {/*55(23) PCM*/} 
-//////interruptEnable();
+
 	enable_IRQ();
   //      setirqP00(irqP[0],irqP[1]);
 }

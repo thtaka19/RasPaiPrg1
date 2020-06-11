@@ -1,4 +1,0 @@
-/usr/bin/arm-none-eabi-gcc -msoft-float -g -O2 -I. -I.. -I/usr/local/include -c main80_0.c -o main80_0.o
-/usr/bin/arm-none-eabi-ld -T ../cmn00/viperlite10.ld -Map Pi1_08_0_v100.map ../cmn00/startup01.o ../cmn00/startupadd.o  ../cmn00/mini_serialPi1.o  ../cmn00/syscalls.o ../cmn00/led10.o ../cmn00/atoix_itoa.o main80_0.o ../cmn00/raspGPIO1.o  -L/usr/lib/gcc/arm-none-eabi/4.8.2/ -L/usr/lib/arm-none-eabi/newlib/ -lc -lgcc -lc -o Pi1_08_0_v100.elf
-/usr/bin/arm-none-eabi-objcopy -O srec Pi1_08_0_v100.elf Pi1_08_0_v100.mot
-/usr/bin/arm-none-eabi-objcopy -O binary Pi1_08_0_v100.elf Pi1_08_0_v100.bin
