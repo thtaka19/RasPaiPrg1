@@ -1,0 +1,131 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+gpfSel              0x4               mainLed1.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x0000000000008000 0x0000000000078000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000008000                . = 0x8000
+
+.text           0x0000000000008000      0x288
+ *(.text*)
+ .text          0x0000000000008000       0xb0 startup01.o
+                0x0000000000008000                _start
+                0x0000000000008024                _hangup
+                0x0000000000008040                enable_IRQ
+                0x0000000000008050                disable_IRQ
+                0x0000000000008064                getmode
+                0x000000000000806c                _initial_vector_start
+                0x00000000000080ac                _initial_vector_end
+ .text          0x00000000000080b0      0x10c mainLed1.o
+                0x00000000000080b0                ledToggle
+                0x00000000000080ec                delay_ms
+                0x0000000000008158                initializeMemory
+                0x00000000000081b8                interruptServiceRoutine
+ .text.startup  0x00000000000081bc       0xcc mainLed1.o
+                0x00000000000081bc                main
+
+.glue_7         0x0000000000008288        0x0
+ .glue_7        0x0000000000008288        0x0 linker stubs
+
+.glue_7t        0x0000000000008288        0x0
+ .glue_7t       0x0000000000008288        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000008288        0x0
+ .vfp11_veneer  0x0000000000008288        0x0 linker stubs
+
+.v4_bx          0x0000000000008288        0x0
+ .v4_bx         0x0000000000008288        0x0 linker stubs
+
+.iplt           0x0000000000008288        0x0
+ .iplt          0x0000000000008288        0x0 startup01.o
+
+.rel.dyn        0x0000000000008288        0x0
+ .rel.iplt      0x0000000000008288        0x0 startup01.o
+                0x0000000000008288                . = ALIGN (0x4)
+                0x0000000000008288                etext = .
+
+.rodata         0x0000000000008288        0x0
+ *(.data*)
+ .data          0x0000000000008288        0x0 startup01.o
+ .data          0x0000000000008288        0x0 mainLed1.o
+                0x0000000000008288                . = ALIGN (0x4)
+                0x0000000000008288                sdata = .
+                0x0000000000008288                _DataStart = .
+
+.data
+ *(.data*)
+                0x0000000000008288                _DataEnd = .
+
+.igot.plt       0x0000000000008288        0x0
+ .igot.plt      0x0000000000008288        0x0 startup01.o
+                0x0000000000008288                . = ALIGN (0x4)
+                0x0000000000008288                edata = .
+                0x0000000000008288                sbss = .
+                0x0000000000008288                _BssStart = .
+
+.bss            0x0000000000008288        0x8
+ *(.bss*)
+ .bss           0x0000000000008288        0x0 startup01.o
+ .bss           0x0000000000008288        0x4 mainLed1.o
+                0x0000000000008288                stateLED
+ COMMON         0x000000000000828c        0x4 mainLed1.o
+                0x000000000000828c                gpfSel
+                0x0000000000008290                _BssEnd = .
+                0x0000000000008290                . = ALIGN (0x4)
+                0x0000000000008290                __bss_end = .
+                0x0000000000008290                ebss = .
+                0x0000000000009000                . = ALIGN (0x1000)
+                0x0000000000009000                __free_start = .
+LOAD startup01.o
+LOAD mainLed1.o
+LOAD /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a
+OUTPUT(Pi0_Led01_v100.elf elf32-littlearm)
+
+.ARM.attributes
+                0x0000000000000000       0x2b
+ .ARM.attributes
+                0x0000000000000000       0x16 startup01.o
+ .ARM.attributes
+                0x0000000000000016       0x30 mainLed1.o
+
+.comment        0x0000000000000000       0x31
+ .comment       0x0000000000000000       0x31 mainLed1.o
+                                         0x32 (size before relaxing)
+
+.debug_line     0x0000000000000000      0x119
+ .debug_line    0x0000000000000000       0x5f startup01.o
+ .debug_line    0x000000000000005f       0xba mainLed1.o
+
+.debug_info     0x0000000000000000      0x231
+ .debug_info    0x0000000000000000       0x7a startup01.o
+ .debug_info    0x000000000000007a      0x1b7 mainLed1.o
+
+.debug_abbrev   0x0000000000000000      0x17e
+ .debug_abbrev  0x0000000000000000       0x14 startup01.o
+ .debug_abbrev  0x0000000000000014      0x16a mainLed1.o
+
+.debug_aranges  0x0000000000000000       0x48
+ .debug_aranges
+                0x0000000000000000       0x20 startup01.o
+ .debug_aranges
+                0x0000000000000020       0x28 mainLed1.o
+
+.debug_loc      0x0000000000000000       0x3e
+ .debug_loc     0x0000000000000000       0x3e mainLed1.o
+
+.debug_ranges   0x0000000000000000       0x50
+ .debug_ranges  0x0000000000000000       0x50 mainLed1.o
+
+.debug_str      0x0000000000000000      0x125
+ .debug_str     0x0000000000000000      0x125 mainLed1.o
+
+.debug_frame    0x0000000000000000       0x70
+ .debug_frame   0x0000000000000000       0x70 mainLed1.o

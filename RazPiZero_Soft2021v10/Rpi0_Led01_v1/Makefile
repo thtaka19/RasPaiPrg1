@@ -1,0 +1,44 @@
+#***********************************************************************/
+#*      GCC/LLCM ARM Baremetal Software / (C) Toshio MURAI  2012-2016   */
+#*      This is Free Software.   You can redistribute this software     */
+#*      and/or modify it ,under the terms of the GNU General Public     */
+#*      License version 3, or (at your option) any later version.       */
+#*      or under the terms of the BSD 3-Clause License.	(Dual Licence)  */
+#*                                                                      */
+#***********************************************************************/
+CPU=arm1176jzf-f
+ 
+CPATH= /usr/bin/arm-none-eabi-
+CC=$(CPATH)gcc
+AS=$(CPATH)as
+LD=$(CPATH)ld
+OBJCOPY=$(CPATH)objcopy
+OBJECTS= startup01.o
+ OBJECTS += mainLed1.o 
+
+MEMORYMAP= viperlite10.ld
+
+OBJECTNAME=Pi0_Led01_v100
+ LIBGCC  = /usr/lib/gcc/arm-none-eabi/4.8.2/
+ IBC = /usr/lib/arm-none-eabi/newlib/
+
+CFLAGS = -msoft-float -g -O2
+CFLAGS+= -I. -I.. -I/usr/local/include
+ASFLAGS= -mcpu=$(CPU) --defsym JTAG=1 # -mfpu=neon
+
+$(OBJECTNAME).elf:  $(OBJECTS)
+	$(LD) -T $(MEMORYMAP) -Map $(OBJECTNAME).map $(OBJECTS) -L$(LIBGCC) -L$(LIBC) -lc -lgcc -o $(OBJECTNAME).elf
+	$(OBJCOPY) -O srec $(OBJECTNAME).elf $(OBJECTNAME).mot
+#	$(OBJCOPY) -O ihex $(OBJECTNAME).elf $(OBJECTNAME).hex
+	$(OBJCOPY) -O binary $(OBJECTNAME).elf $(OBJECTNAME).bin
+#	$(OBJCOPY) -O binary $(OBJECTNAME).elf kernel7.img
+
+
+.S.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
+clean	:
+	rm -rf *.o $(OBJECTNAME).* kernel*.img *.mot *.hex *.bin *.img *.out
